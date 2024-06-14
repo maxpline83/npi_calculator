@@ -50,7 +50,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Change to src directory
-        run: cd src
+        run: |
+          cd src
+          ls
 
       - name: Run NPI Calculator Tests
         run: |
