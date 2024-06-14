@@ -51,4 +51,4 @@ jobs:
 
       - name: Run NPI Calculator Tests
         run: |
-          python -m unittest tests.calculator.test
+          python -m unittest src.tests.calculator.test
