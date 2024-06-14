@@ -1,25 +1,36 @@
 def eval_npi(expression: str) -> int:
     """
-    
+    Evaluate an expression in Reverse Polish Notation (RPN) and return the result.
 
     Args:
-        expression (str): _description_
+        expression (str): A string representing the expression in Reverse Polish Notation.
+
+    Raises:
+        ZeroDivisionError: Raised when division by zero is encountered.
+        ValueError: Raised when an invalid token is encountered.
+        IndexError: Raised when the expression is invalid.
 
     Returns:
-        int: _description_
+        int: The result of the evaluated expression.
+
+    Example:
+        >>> eval_npi("5 3 +")
+        8
+        >>> eval_npi("4 2 * 3 +")
+        11
+        >>> eval_npi("10 2 /")
+        5
     """
     stack = []
-    tokens = expression.split()  # Sépare l'expression en tokens (opérandes et opérateurs)
+    tokens = expression.split(" ")
 
     for token in tokens:
         if token.isdigit() or (token[1:].isdigit() and token[0] == '-'):
-            # Si le token est un nombre (positif ou négatif)
             stack.append(int(token))
-        else:
-            # Sinon, c'est un opérateur
+        elif token in ['+', '-', '*', '/']:
             operand2 = stack.pop()
             operand1 = stack.pop()
-            
+
             if token == '+':
                 stack.append(operand1 + operand2)
             elif token == '-':
@@ -27,14 +38,17 @@ def eval_npi(expression: str) -> int:
             elif token == '*':
                 stack.append(operand1 * operand2)
             elif token == '/':
-                stack.append(operand1 / operand2)  # Attention à la division par zéro ici
-            
-    return stack.pop()  # Le résultat final se trouve au sommet de la pile
+                if operand2 == 0:
+                    raise ZeroDivisionError("Division by zero is not allowed")
+                else:
+                    stack.append(operand1 / operand2)
+        else:
+            raise ValueError(f"Invalid token: {token}, only numbers and operators are allowed")
+    if len(stack) == 1:
+        return stack.pop()
+    else:
+        raise IndexError("Invalid expression")
+
 
 if __name__ == '__main__':
-    # Exemples d'utilisation :
-    print(eval_npi("3 4 +"))   # Résultat attendu : 7
-    print(eval_npi("3 4 16 + *"))  # Résultat attendu : 60
-    print(eval_npi("34 16 +"))  # Résultat attendu : 50
-    print(eval_npi("3 416 +"))  # Résultat attendu : 419
-    print(eval_npi("146 6 +"))  # Résultat attendu : 152
+    print(eval_npi("3 10 5 + *")) # Expected output: 45
