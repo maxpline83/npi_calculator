@@ -4,7 +4,7 @@ import unittest
 
 class TestEvalNPI(unittest.TestCase):
     """A test case for evaluating expressions in NPI (Reverse Polish Notation).
-    
+
     This test case contains multiple test methods to verify the correctness of the `eval_npi` function.
     """
     def test_addition(self):
