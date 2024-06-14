@@ -1,4 +1,4 @@
-from calculator.npi_calculator import eval_npi
+from src.calculator.npi_calculator import eval_npi
 import unittest
 
 
