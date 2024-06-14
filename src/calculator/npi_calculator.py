@@ -18,8 +18,8 @@ def eval_npi(expression: str) -> int:
         8
         >>> eval_npi("4 2 * 3 +")
         11
-        >>> eval_npi("10 2 /")
-        5
+        >>> eval_npi("10 2 ÷")
+        5.0
     """
     stack = []
     tokens = expression.split(" ")
@@ -27,7 +27,7 @@ def eval_npi(expression: str) -> int:
     for token in tokens:
         if token.isdigit() or (token[1:].isdigit() and token[0] == '-'):
             stack.append(int(token))
-        elif token in ['+', '-', '*', '/']:
+        elif token in ['+', '-', '*', '÷']:
             operand2 = stack.pop()
             operand1 = stack.pop()
 
@@ -37,18 +37,20 @@ def eval_npi(expression: str) -> int:
                 stack.append(operand1 - operand2)
             elif token == '*':
                 stack.append(operand1 * operand2)
-            elif token == '/':
+            elif token == '÷':
+                # TODO: if it is a int remove .000000
                 if operand2 == 0:
                     raise ZeroDivisionError("Division by zero is not allowed")
                 else:
                     stack.append(operand1 / operand2)
         else:
             raise ValueError(f"Invalid token: {token}, only numbers and operators are allowed")
-    if len(stack) == 1:
-        return stack.pop()
-    else:
+    if len(stack) != 1:
         raise IndexError("Invalid expression")
+
+    return stack.pop()
 
 
 if __name__ == '__main__':
-    print(eval_npi("3 10 5 + *")) # Expected output: 45
+    print(eval_npi("3 10 5 + *"))  # Expected output: 45
+    print(eval_npi("3 4 + +"))

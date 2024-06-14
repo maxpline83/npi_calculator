@@ -7,6 +7,7 @@ class TestEvalNPI(unittest.TestCase):
 
     This test case contains multiple test methods to verify the correctness of the `eval_npi` function.
     """
+
     def test_addition(self):
         self.assertEqual(eval_npi("3 4 +"), 7)
 
@@ -17,7 +18,10 @@ class TestEvalNPI(unittest.TestCase):
         self.assertEqual(eval_npi("3 4 *"), 12)
 
     def test_division(self):
-        self.assertEqual(eval_npi("12 3 /"), 4)
+        self.assertEqual(eval_npi("12 3 ÷"), 4)
+
+    def test_division_2(self):
+        self.assertEqual(eval_npi("10 2 ÷"), 5.0)
 
     def test_complex_expression_1(self):
         self.assertEqual(eval_npi("3 4 + 16 *"), 112)
@@ -33,7 +37,7 @@ class TestEvalNPI(unittest.TestCase):
 
     def test_zero_division(self):
         with self.assertRaises(ZeroDivisionError):
-            eval_npi("5 0 /")
+            eval_npi("5 0 ÷")
 
     def test_invalid_input_letter(self):
         with self.assertRaises(ValueError):

@@ -1,2 +1,5 @@
 fastapi
 flake8
+sqlalchemy<2.0
+pandas
+uvicorn
