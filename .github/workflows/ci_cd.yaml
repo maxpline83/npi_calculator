@@ -49,6 +49,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run NPI Calculator Tests
+      - name: Change to src directory
+        run: cd src
+
+      - name: Run tests
         run: |
-          python -m unittest src.tests.calculator.test
+          python -m unittest discover -s ../tests -p "*.py"
