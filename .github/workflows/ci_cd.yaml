@@ -80,9 +80,9 @@ jobs:
 
       - name: Set up Docker Compose
         run: |
-          sudo docker-compose -f . build
-          sudo docker-compose -f . up -d
+          sudo docker-compose -f docker-compose.yml build
+          sudo docker-compose -f docker-compose.yml up -d
 
       - name: Clean up Docker resources
         run: |
-          sudo docker-compose -f . down --remove-orphans
+          sudo docker-compose -f docker-compose.yml down --remove-orphans
