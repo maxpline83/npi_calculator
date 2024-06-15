@@ -44,7 +44,7 @@ class TestEvalNPI(unittest.TestCase):
             eval_npi("3 a +")
 
     def test_invalid_input_malformed_expression(self):
-        with self.assertRaises(IndexError):
+        with self.assertRaises(ValueError):
             eval_npi("3 4 + +")
 
 
