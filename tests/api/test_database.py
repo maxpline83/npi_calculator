@@ -3,7 +3,6 @@ from fastapi.testclient import TestClient
 from src.api.app import app
 from src.database.database import DatabaseConnector
 
-
 class TestDatabaseRouter(unittest.TestCase):
 
     def setUp(self):

@@ -3,8 +3,9 @@ from fastapi import APIRouter
 
 from src.api import get_db_connector
 
-router = APIRouter()
 OUTPUT_FILE_PATH = "data/output_files"
+
+router = APIRouter()
 db_connector = get_db_connector()
 
 
