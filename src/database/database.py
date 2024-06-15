@@ -27,7 +27,7 @@ class DatabaseConnector:
         self.model = self.create_model()
         print("Database connected successfully.")
 
-    def initialize_database(self):
+    def initialize_database(self) -> None:
         """
         Initialize the database by creating the table.
         """
@@ -50,7 +50,7 @@ class DatabaseConnector:
 
         return ApiCall
 
-    def insert_api_result_in_db(self, query: str, result: float):
+    def insert_api_result_in_db(self, query: str, result: float) -> None:
         """
         Insert the API result in the SQL table.
 
@@ -64,7 +64,7 @@ class DatabaseConnector:
         session.commit()
         session.close()
 
-    def insert_example_data_db(self):
+    def insert_example_data_db(self) -> None:
         """
         Insert example data in the SQL table.
         """
@@ -77,7 +77,7 @@ class DatabaseConnector:
         for result in api_results:
             self.insert_api_result_in_db(result['query'], result['result'])
 
-    def read_db(self):
+    def read_db(self) -> list:
         """
         Read all data from the SQL table.
 
@@ -89,7 +89,7 @@ class DatabaseConnector:
         session.close()
         return results
 
-    def remove_all_data_db(self):
+    def remove_all_data_db(self) -> None:
         """
         Remove all data from the SQL table.
         """

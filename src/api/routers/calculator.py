@@ -8,7 +8,7 @@ db_connector = get_db_connector()
 
 
 @router.get("/npi_calculator/{expression}")
-def compute_expression(expression: str):
+def compute_expression(expression: str) -> dict:
     try:
         result = eval_npi(expression)
         db_connector.insert_api_result_in_db(expression, result)
