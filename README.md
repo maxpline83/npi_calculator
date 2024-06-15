@@ -65,7 +65,7 @@ To set up the NPI Calculator project, follow these steps:
 1. Clone the repository:
 
 ```bash
-git clone https://github.com/your-username/npi_calculator.git
+git clone https://github.com/maxpline83/npi_calculator.git
 ```
 
 2. Navigate to the project directory:
