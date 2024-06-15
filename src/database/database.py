@@ -2,11 +2,24 @@ from sqlalchemy import Column, Integer, String, Float
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
+import os
 
 
 class DatabaseConnector:
+    """
+    A class to connect to a SQLite database and perform operations on it.
+    
+    Attributes:
+        db_name (str): The name of the database.
+        db_path (str): The path to the database.
+        engine (sqlalchemy.engine.base.Engine): The engine to connect to the database.
+        Base (sqlalchemy.ext.declarative.api.DeclarativeMeta): The base class for the database model.
+        Session (sqlalchemy.orm.session.sessionmaker): The session class for the database.
+        model (sqlalchemy.ext.declarative.api.DeclarativeMeta): The model class for the database.
+    """
     def __init__(self, db_name):
         self.db_name = db_name
+        os.makedirs("data/database/", exist_ok=True)
         self.db_path = f'sqlite:///data/database/{db_name}'
         self.engine = create_engine(self.db_path, echo=True)
         self.Base = declarative_base()
@@ -15,10 +28,19 @@ class DatabaseConnector:
         print("Database connected successfully.")
 
     def initialize_database(self):
+        """
+        Initialize the database by creating the table.
+        """
         self.Base.metadata.create_all(self.engine)
         print("Database initialized successfully.")
 
     def create_model(self):
+        """
+        Create a model class for the database.
+        
+        Returns:
+            sqlalchemy.ext.declarative.api.DeclarativeMeta: The model class for the database.
+        """
         class ApiCall(self.Base):
             __tablename__ = 'api_requests'
 

@@ -4,7 +4,7 @@ from src.api.app import app
 
 
 class TestBasicApiRout(unittest.TestCase):
-
+    # TODO: Test with response status
     def setUp(self):
         self.client = TestClient(app)
 

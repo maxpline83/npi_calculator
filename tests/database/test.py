@@ -16,22 +16,17 @@ class TestDatabaseConnector(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        # Remove the test database file after all tests are done
         os.remove(TEST_DB_NAME)
 
     def setUp(self):
-        # Insert example data before each test
         self.db_connector.insert_example_data_db()
 
     def tearDown(self):
-        # Remove all data from the test database after each test
         self.db_connector.remove_all_data_db()
 
     def test_insert_and_read_data(self):
-        # Test insertion and reading of data
-
         results = self.db_connector.read_db()
-        self.assertEqual(len(results), 3)  # Expecting 3 records as per example data
+        self.assertEqual(len(results), 3)
 
         # Check specific data points
         self.assertEqual(results[0].query, '5 3 +')

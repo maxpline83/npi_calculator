@@ -15,9 +15,9 @@ def eval_npi(expression: str) -> float:
 
     Example:
         >>> eval_npi("5 3 +")
-        8.0
+        8
         >>> eval_npi("4 2 * 3 +")
-        11.0
+        11
         >>> eval_npi("10 2 ÷")
         5.0
     """
