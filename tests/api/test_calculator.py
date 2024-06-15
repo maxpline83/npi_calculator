@@ -6,7 +6,7 @@ from src.database.database import DatabaseConnector
 
 class TestCalculatorRouter(unittest.TestCase):
     # TODO: Test with response status
-    
+
     def setUp(self):
         self.client = TestClient(app)
         self.db_connector = DatabaseConnector(db_name="api_requests.db")
@@ -16,7 +16,6 @@ class TestCalculatorRouter(unittest.TestCase):
         expected_result = {"expression": "3 5 +", "result": 8}
         response = self.client.get(f"/calculator/npi_calculator/{expression}")
         self.assertEqual(response.json(), expected_result)
-
 
     def test_npi_calculator_error(self):
         expression = "3 0 ÷"
