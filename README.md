@@ -1,7 +1,7 @@
 # NPI Calculator
 
 ## Overview
-The NPI Calculator is a tool designed to perform calculations using Reverse Polish Notation (RPN), also known as postfix notation. This project includes API handling, database interactions, and computation logic to process and manage NPI-related data efficiently.
+The NPI Calculator is a tool designed to perform calculations using Reverse Polish Notation (RPN), also known as postfix notation. This project includes API handling, database interactions, and computation.
 
 ## Table of Contents
 - [Project Overview](#overview)
