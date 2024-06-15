@@ -1,4 +1,3 @@
-
 # NPI Calculator
 
 ## Overview
@@ -132,7 +131,7 @@ Response Example (Success):
 Response Example (Error):
 ```json
 {
-    "expression": "1 0 /",
+    "expression": "1 0 ÷",
     "error": "Division by zero is not allowed"
 }
 ```
