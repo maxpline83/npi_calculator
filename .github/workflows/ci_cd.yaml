@@ -52,3 +52,19 @@ jobs:
       - name: Run NPI Calculator Tests
         run: |
           python -m unittest tests.calculator.test
+      
+      - name: Run Basic API Tests
+        run: |
+          python -m unittest tests.api.test
+
+      - name: Run Calculator API Tests
+        run: |
+          python -m unittest tests.api.test_calculator
+
+      - name: Run API Integration Tests
+        run: |
+          python -m unittest tests.api.test_database
+
+      - name: Run Database Tests
+        run: |
+          python -m unittest tests.database.test

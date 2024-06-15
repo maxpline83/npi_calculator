@@ -1,4 +1,4 @@
-def eval_npi(expression: str) -> int:
+def eval_npi(expression: str) -> float:
     """
     Evaluate an expression in Reverse Polish Notation (RPN) and return the result.
 
@@ -15,9 +15,9 @@ def eval_npi(expression: str) -> int:
 
     Example:
         >>> eval_npi("5 3 +")
-        8
+        8.0
         >>> eval_npi("4 2 * 3 +")
-        11
+        11.0
         >>> eval_npi("10 2 ÷")
         5.0
     """
@@ -38,7 +38,6 @@ def eval_npi(expression: str) -> int:
             elif token == '*':
                 stack.append(operand1 * operand2)
             elif token == '÷':
-                # TODO: if it is a int remove .000000
                 if operand2 == 0:
                     raise ZeroDivisionError("Division by zero is not allowed")
                 else:
@@ -52,5 +51,5 @@ def eval_npi(expression: str) -> int:
 
 
 if __name__ == '__main__':
-    print(eval_npi("3 10 5 + *"))  # Expected output: 45
-    print(eval_npi("3 4 + +"))
+    print(eval_npi("3 10 5 + *"))  # Expected output: 45.0
+    print(eval_npi("3 4 + +")) # Expected output: 7.0
