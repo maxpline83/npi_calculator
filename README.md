@@ -217,7 +217,7 @@ Response Example:
 
 ```bash
 # Compute NPI Expression
-curl -X GET http://localhost:8000/npi_calculator/1%203%20%2B
+curl -X GET http://localhost:8000/npi_calculator/2 5 +
 
 # Insert Example Data
 curl -X GET http://localhost:8000/database/insert_example_data
