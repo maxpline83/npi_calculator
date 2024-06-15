@@ -95,7 +95,8 @@ pip install -r requirements.txt
 6. Run the application using Docker Compose:
 
 ```bash
-docker-compose up
+docker-compose -f docker-compose.yml build
+docker-compose -f docker-compose.yml up -d
 ```
 
 7. Access the NPI Calculator API at `http://localhost:8000` and start performing NPI calculations.
@@ -137,12 +138,12 @@ Response Example (Error):
 ```
 
 #### Insert Example Data
-- **Endpoint:** `database/insert_example_data`
+- **Endpoint:** `/database/insert_example_data`
 - **Method:** `GET`
 - **Description:** Inserts example data into the database for testing purposes.
 - **Usage Example:**
 ```http
-GET database/insert_example_data
+GET /database/insert_example_data
 ```
 Response Example:
 ```json
@@ -154,12 +155,12 @@ Response Example:
 
 #### Get Calculation History
 
-- **Endpoint:** `database/history`
+- **Endpoint:** `/database/history`
 - **Method:** `GET`
 - **Description:** Retrieves the history of calculations stored in the database.
 - **Usage Example:**
 ```http
-GET database/history
+GET /database/history
 ```
 Response Example:
 ```json
@@ -180,12 +181,12 @@ Response Example:
 ```
 
 #### Clear Calculation History
-- **Endpoint:** `database/clear`
+- **Endpoint:** `/database/clear`
 - **Method:** `GET`
 - **Description:** Clears all calculation history from the database.
 - **Usage Example:**
 ```http
-GET database/clear
+GET /database/clear
 ```
 Response Example:
 ```json
@@ -197,14 +198,14 @@ Response Example:
 
 
 #### Export Data to CSV
-- **Endpoint:** `database/export_to_csv/{filename}`
+- **Endpoint:** `/database/export_to_csv/{filename}`
 - **Method:** `GET`
 - **Description:** Exports the calculation history to a CSV file with the specified filename.
 - **Parameters:**
   - `filename` (string): The name of the CSV file to export.
 - **Usage Example:**
 ```http
-GET database/export_to_csv/test.csv
+GET /database/export_to_csv/test.csv
 ```
 Response Example:
 ```json
