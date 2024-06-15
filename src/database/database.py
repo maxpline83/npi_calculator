@@ -21,7 +21,7 @@ class DatabaseConnector:
         self.db_name = db_name
         os.makedirs("data/database/", exist_ok=True)
         self.db_path = f'sqlite:///data/database/{db_name}'
-        self.engine = create_engine(self.db_path, echo=True)
+        self.engine = create_engine(self.db_path)
         self.Base = declarative_base()
         self.Session = sessionmaker(bind=self.engine)
         self.model = self.create_model()
